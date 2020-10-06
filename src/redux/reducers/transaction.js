@@ -2,11 +2,13 @@ import {
   doTransAction,
   clearStatus,
   getHistoryAction,
+  getMoreTransAction,
   setNumNotifAction,
   pending,
   rejected,
   fulfilled,
   notificAction,
+  resetNumNotifAction,
 } from '../actions/actionType';
 
 const initialState = {
@@ -15,6 +17,7 @@ const initialState = {
   dataNotif: [],
   numOfNotif: 0,
   history: [],
+  pageInfo: [],
   isPending: false,
   isRejected: false,
   isfulfilled: false,
@@ -62,6 +65,32 @@ const transaction = (state = initialState, { type, payload }) => {
         isfulfilled: true,
         history: payload.data.data,
       };
+    case getMoreTransAction + pending:
+      return {
+        ...state,
+        isPending: true,
+        isfulfilled: false,
+      };
+    case getMoreTransAction + rejected:
+      return {
+        ...state,
+        isPending: false,
+        isRejected: true,
+        history: payload.data,
+      };
+    // case getMoreTransAction + fulfilled:
+    //   let newData = payload.data.data.map((item) => {
+    //     const dataHistory = {
+    //       null: null
+    //     }
+    //   })
+    //   return {
+    //     ...state,
+    //     isPending: false,
+    //     isfulfilled: true,
+    //     history: payload.data.data,
+    //   };
+
     case notificAction + pending:
       return {
         ...state,
@@ -85,7 +114,12 @@ const transaction = (state = initialState, { type, payload }) => {
     case setNumNotifAction:
       return {
         ...state,
-        numOfNotif: +1,
+        numOfNotif: state.numOfNotif + 1,
+      };
+    case resetNumNotifAction:
+      return {
+        ...state,
+        numOfNotif: 0,
       };
     case clearStatus:
       return {
@@ -94,7 +128,6 @@ const transaction = (state = initialState, { type, payload }) => {
         isRejected: false,
         isfulfilled: false,
         dataStatus: [],
-        numOfNotif: 0,
       };
     default:
       return state;

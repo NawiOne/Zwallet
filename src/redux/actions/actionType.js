@@ -20,8 +20,10 @@ export const searchContactAction = 'SEARCH_CONTACT';
 // transaction
 export const doTransAction = 'DO_TRANSACTION';
 export const getHistoryAction = 'GET_HISTORY';
+export const getMoreTransAction = 'GET_MORE_HISTORY';
 export const notificAction = 'NOTIFICATION';
 export const setNumNotifAction = 'SET_NUM';
+export const resetNumNotifAction = 'RESET _NUM';
 
 export const pending = '_PENDING';
 export const fulfilled = '_FULFILLED';

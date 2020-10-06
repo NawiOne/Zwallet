@@ -1,9 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { View, Text, Image, StatusBar, TouchableOpacity } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StatusBar,
+  TouchableOpacity,
+  StyleSheet,
+} from 'react-native';
 import asyncStorage from '@react-native-community/async-storage';
 import { getUserCreator } from '../redux/actions/auth';
-import { getHistoryCreator, setNumNotifCreator } from '../redux/actions/transaction';
+import {
+  getHistoryCreator,
+  resetNumNotifCreator,
+} from '../redux/actions/transaction';
+import {clearStatusCreator} from '../redux/actions/auth'
 import style from '../style/home';
 import imgUser from '../assets/image/avatar.webp';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -64,15 +75,23 @@ const Home = ({ navigation }) => {
             <Text style={{ color: 'white', fontSize: 24 }}>Rp{curency}</Text>
           </View>
         </TouchableOpacity>
-        <Icon
-          name="notifications-outline"
-          color="white"
-          size={30}
-          style={{ marginTop: 15 }}
-          onPress={() => {
-            dispatch(setNumNotifCreator())
-            navigation.navigate('notification')}}
-        />
+        <View>
+          <Icon
+            name="notifications-outline"
+            color="white"
+            size={30}
+            style={{ marginTop: 15 }}
+            onPress={() => {
+              dispatch(resetNumNotifCreator())
+              navigation.navigate('notification');
+            }}
+          />
+          {transaction.numOfNotif === 0 ? null : (
+            <View style={innerstyle.badge}>
+              <Text>{transaction.numOfNotif}</Text>
+            </View>
+          )}
+        </View>
       </View>
       <View style={style.operation}>
         <TouchableOpacity
@@ -92,3 +111,16 @@ const Home = ({ navigation }) => {
 };
 
 export default Home;
+
+const innerstyle = StyleSheet.create({
+  badge: {
+    backgroundColor: 'red',
+    width: 20,
+    height: 20,
+    borderRadius: 20,
+    alignItems: 'center',
+    position: 'absolute',
+    top: 10,
+    left: 10,
+  },
+});

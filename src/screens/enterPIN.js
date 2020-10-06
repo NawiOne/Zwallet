@@ -8,7 +8,11 @@ import {
   StyleSheet,
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
-import { doTransCreator, notifCreator, setNumNotifCreator } from '../redux/actions/transaction';
+import {
+  doTransCreator,
+  notifCreator,
+  setNumNotifCreator,
+} from '../redux/actions/transaction';
 import { clearStatusCreator } from '../redux/actions/auth';
 import { useRoute, useNavigation } from '@react-navigation/native';
 import SmootPinCode from 'react-native-smooth-pincode-input';
@@ -92,8 +96,8 @@ const EnterPIN = () => {
         `Transfer to ${contact.oneContact.username} success`,
         channelId,
       );
+      dispatch(setNumNotifCreator());
       dispatch(notifCreator(sender_id, receiver_id, amount, trans_type));
-      dispatch(setNumNotifCreator())
       dispatch(clearStatusCreator());
       setMsg(null);
     } else if (transaction.dataStatus === 500) {

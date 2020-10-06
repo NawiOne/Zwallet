@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -7,18 +7,18 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native';
-import {useDispatch, useSelector} from 'react-redux';
-import {getEmailCreator, clearStatusCreator} from '../redux/actions/auth';
+import { useDispatch, useSelector } from 'react-redux';
+import { getEmailCreator, clearStatusCreator } from '../redux/actions/auth';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const height = Dimensions.get('screen').height;
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 const EnterEmail = () => {
   const [email, setEmail] = useState('');
   const [msg, setMsg] = useState(null);
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const {auth} = useSelector((state) => state);
+  const { auth } = useSelector((state) => state);
 
   const handleSubmit = () => {
     if (email === '') {
@@ -38,7 +38,7 @@ const EnterEmail = () => {
         dispatch(clearStatusCreator());
       } else {
         setMsg('Sorry email is not found');
-        dispatch(clearStatusCreator())
+        dispatch(clearStatusCreator());
       }
     }
   });

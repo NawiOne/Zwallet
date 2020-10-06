@@ -1,10 +1,12 @@
 import {
   doTransAction,
   getHistoryAction,
+  getMoreTransAction,
   notificAction,
   setNumNotifAction,
+  resetNumNotifAction,
 } from '../actions/actionType';
-import { doTransaction, getHistory, notif } from '../../utils/API';
+import { doTransaction, getHistory, notif, getMoreHistory } from '../../utils/API';
 
 export const doTransCreator = (
   sender_id,
@@ -37,6 +39,12 @@ export const getHistoryCreator = (id) => {
     payload: getHistory(id),
   };
 };
+export const getMoreHistoryCreator = (id, page) => {
+  return {
+    type: getMoreTransAction,
+    payload: getMoreHistory(id, page),
+  };
+};
 export const notifCreator = (sender, receiver, amount, transaction_type) => {
   return {
     type: notificAction,
@@ -49,3 +57,9 @@ export const setNumNotifCreator = () => {
     type: setNumNotifAction,
   };
 };
+
+export const resetNumNotifCreator = () => {
+  return {
+    type: resetNumNotifAction,
+  }
+}

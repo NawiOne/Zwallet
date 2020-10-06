@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
@@ -57,7 +57,7 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
   },
   bottom: {
-    position: 'absolute',
+    // position: 'absolute',
     height: 90,
     width: '100%',
     bottom: 0,
@@ -88,6 +88,6 @@ export default StyleSheet.create({
     padding: 12,
     borderRadius: 10,
     width: 150,
-    textAlign: 'center'
+    textAlign: 'center',
   },
 });
