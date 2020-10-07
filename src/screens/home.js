@@ -11,10 +11,11 @@ import {
 import asyncStorage from '@react-native-community/async-storage';
 import { getUserCreator } from '../redux/actions/auth';
 import {
+  getSampleHistoryCreator,
   getHistoryCreator,
   resetNumNotifCreator,
 } from '../redux/actions/transaction';
-import {clearStatusCreator} from '../redux/actions/auth'
+import { clearStatusCreator } from '../redux/actions/auth';
 import style from '../style/home';
 import imgUser from '../assets/image/avatar.webp';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -43,7 +44,7 @@ const Home = ({ navigation }) => {
     });
     dispatch(getUserCreator(auth.data.email));
     setTimeout(() => {
-      dispatch(getHistoryCreator(auth.data.id));
+      dispatch(getSampleHistoryCreator(auth.data.id));
     }, 1000);
   }, []);
   useEffect(() => {
@@ -82,7 +83,7 @@ const Home = ({ navigation }) => {
             size={30}
             style={{ marginTop: 15 }}
             onPress={() => {
-              dispatch(resetNumNotifCreator())
+              dispatch(resetNumNotifCreator());
               navigation.navigate('notification');
             }}
           />

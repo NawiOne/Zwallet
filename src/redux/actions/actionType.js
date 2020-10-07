@@ -19,6 +19,7 @@ export const searchContactAction = 'SEARCH_CONTACT';
 
 // transaction
 export const doTransAction = 'DO_TRANSACTION';
+export const getSampleHistoryAction = 'GET_SAMPLE_HISTORY';
 export const getHistoryAction = 'GET_HISTORY';
 export const getMoreTransAction = 'GET_MORE_HISTORY';
 export const notificAction = 'NOTIFICATION';

@@ -103,6 +103,10 @@ export const doTransaction = (
   const url = 'http://192.168.43.52:2000/transaction/dotrans';
   return Axios.post(url, data);
 };
+export const getSampleHistory = (id) => {
+  const url = `http://192.168.43.52:2000/transaction?id=${id}&page=1&limit=4`;
+  return Axios.get(url);
+};
 
 export const getHistory = (id) => {
   const url = `http://192.168.43.52:2000/transaction?id=${id}&page=1&limit=20`;

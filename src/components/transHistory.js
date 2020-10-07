@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { View, Text, Image, FlatList } from 'react-native';
-import { getHistoryCreator } from '../redux/actions/transaction';
+import {
+  getHistoryCreator,
+  getSampleHistoryCreator,
+} from '../redux/actions/transaction';
 import style from '../style/home';
 import avatar from '../assets/image/avatar.webp';
 
@@ -10,6 +13,7 @@ const Transhistory = ({ navigation }) => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getSampleHistoryCreator(auth.data.id));
     dispatch(getHistoryCreator(auth.data.id));
   }, []);
 
@@ -56,6 +60,7 @@ const Transhistory = ({ navigation }) => {
         <Text
           style={{ color: '#6379F4', fontSize: 14 }}
           onPress={() => {
+    
             navigation.navigate('transhistory');
           }}>
           See all
@@ -64,7 +69,7 @@ const Transhistory = ({ navigation }) => {
       <FlatList
         showsVerticalScrollIndicator={false}
         style={style.flatList}
-        data={transaction.history}
+        data={transaction.sampleHistory}
         renderItem={renderItem}
         keyExtractor={(item, index) => index.toString()}
       />

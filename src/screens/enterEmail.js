@@ -7,11 +7,16 @@ import {
   StyleSheet,
   Dimensions,
 } from 'react-native';
+import RNSmtpMailer from 'react-native-smtp-mailer';
 import { useDispatch, useSelector } from 'react-redux';
 import { getEmailCreator, clearStatusCreator } from '../redux/actions/auth';
+import { sharedVariable } from '../../env';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const height = Dimensions.get('screen').height;
 import { useNavigation } from '@react-navigation/native';
+
+const otp = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
+console.log(sharedVariable.hostEmail, 'ini shred', sharedVariable.password);
 
 const EnterEmail = () => {
   const [email, setEmail] = useState('');
@@ -29,11 +34,32 @@ const EnterEmail = () => {
     }
   };
 
+  const handleEmail = () => {
+    RNSmtpMailer.sendMail({
+      mailhost: 'smtp.gmail.com',
+      port: '465',
+      ssl: true,
+      username: sharedVariable.hostEmail,
+      password: sharedVariable.password,
+      from: sharedVariable.sender,
+      recipients: email,
+      subject: 'OTP code',
+      htmlBody: `<p>${otp}</p>`,
+      attachmentPaths: [],
+      attachmentNames: [],
+      attachmentTypes: [],
+    })
+      .then((success) => console.log(success, 'success'))
+      .catch((err) => console.log(err, 'errorr cuyyy'));
+  };
+
   useEffect(() => {
     if (auth.status === 200) {
       if (auth.email.length) {
-        navigation.navigate('resetpassword', {
+        handleEmail();
+        navigation.navigate('otp', {
           email: email,
+          otp: otp,
         });
         dispatch(clearStatusCreator());
       } else {
@@ -41,7 +67,7 @@ const EnterEmail = () => {
         dispatch(clearStatusCreator());
       }
     }
-  });
+  }, [auth.status]);
 
   return (
     <>
@@ -53,7 +79,8 @@ const EnterEmail = () => {
           <View style={style.title}>
             <Text style={style.titleText}>Reset Password</Text>
             <Text style={style.desc}>
-              Enter your Zwallet -email so we can send you a password reset link
+              Enter your Zwallet -email so we can send you a password reset OTP
+              code
             </Text>
           </View>
           <View style={style.form}>

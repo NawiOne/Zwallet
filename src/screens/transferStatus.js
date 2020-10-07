@@ -1,7 +1,7 @@
-import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {getUserCreator} from '../redux/actions/auth';
-import {getHistoryCreator} from '../redux/actions/transaction';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserCreator } from '../redux/actions/auth';
+import { getSampleHistoryCreator, getHistoryCreator } from '../redux/actions/transaction';
 import {
   View,
   Text,
@@ -16,13 +16,13 @@ import avatar from '../assets/image/avatar.webp';
 import style from '../style/tfStatus';
 import Icon from 'react-native-vector-icons/Feather';
 
-import {useRoute} from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 
-const TransferStatus = ({navigation}) => {
-  const {auth, contact} = useSelector((state) => state);
+const TransferStatus = ({ navigation }) => {
+  const { auth, contact } = useSelector((state) => state);
   const dispatch = useDispatch();
   const route = useRoute();
-  const {amount, notes, date, balance, time} = route.params;
+  const { amount, notes, date, balance, time } = route.params;
 
   const formatAmount = new Intl.NumberFormat('de-DE').format(amount);
   const formatBalance = new Intl.NumberFormat('de-DE').format(balance);
@@ -34,7 +34,7 @@ const TransferStatus = ({navigation}) => {
         onPress: () => null,
         style: 'cancel',
       },
-      {text: 'YES', onPress: () => BackHandler.exitApp()},
+      { text: 'YES', onPress: () => BackHandler.exitApp() },
     ]);
     return true;
   };
@@ -83,7 +83,7 @@ const TransferStatus = ({navigation}) => {
                 source={
                   contact.oneContact.picture === null
                     ? avatar
-                    : {uri: contact.oneContact.picture}
+                    : { uri: contact.oneContact.picture }
                 }
                 style={style.imgUser}
               />
@@ -100,6 +100,7 @@ const TransferStatus = ({navigation}) => {
             navigation.navigate('home');
             dispatch(getUserCreator(auth.data.email));
             dispatch(getHistoryCreator(auth.data.id));
+            dispatch(getSampleHistoryCreator(auth.data.id));
           }}>
           <Text style={style.strActive}>Back To Home</Text>
         </TouchableOpacity>

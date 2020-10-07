@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -8,8 +8,8 @@ import {
   Dimensions,
   ScrollView,
 } from 'react-native';
-import {Overlay} from 'react-native-elements';
-import {useDispatch, useSelector} from 'react-redux';
+import { Overlay } from 'react-native-elements';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   resetPasswordCreator,
   clearStatusCreator,
@@ -18,7 +18,7 @@ import {
 } from '../redux/actions/auth';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const height = Dimensions.get('screen').height;
-import {useRoute, useNavigation} from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 
 const RessetPassword = () => {
   const [pass1, setPass1] = useState('');
@@ -30,10 +30,11 @@ const RessetPassword = () => {
   const [visible, setVisible] = useState(false);
   const route = useRoute();
   const navigation = useNavigation();
-  const {email} = route.params;
+  const { email } = route.params;
+  console.log(email)
 
   const dispatch = useDispatch();
-  const {auth} = useSelector((state) => state);
+  const { auth } = useSelector((state) => state);
 
   const handleSubmit = () => {
     const checkPass = /^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,}$/;
@@ -137,14 +138,14 @@ const RessetPassword = () => {
         </View>
         <Overlay isVisible={visible} overlayStyle={style.overlay}>
           <View style={style.overlayCont}>
-            <Text style={{fontWeight: 'bold'}}>Reset password success</Text>
+            <Text style={{ fontWeight: 'bold' }}>Reset password success</Text>
             <TouchableOpacity
               style={style.overlayBtn}
               onPress={() => {
                 setVisible(!visible);
                 navigation.navigate('login');
               }}>
-              <Text style={{fontWeight: 'bold', color: 'white'}}>Login</Text>
+              <Text style={{ fontWeight: 'bold', color: 'white' }}>Login</Text>
             </TouchableOpacity>
           </View>
         </Overlay>

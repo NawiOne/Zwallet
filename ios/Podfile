@@ -8,6 +8,8 @@ target 'zwallet' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'RNSmtpMailer', :path => '../node_modules/react-native-smtp-mailer'
+
   target 'zwalletTests' do
     inherit! :complete
     # Pods for testing

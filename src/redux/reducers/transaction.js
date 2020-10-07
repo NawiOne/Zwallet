@@ -1,6 +1,7 @@
 import {
   doTransAction,
   clearStatus,
+  getSampleHistoryAction,
   getHistoryAction,
   getMoreTransAction,
   setNumNotifAction,
@@ -17,6 +18,7 @@ const initialState = {
   dataNotif: [],
   numOfNotif: 0,
   history: [],
+  sampleHistory: [],
   pageInfo: [],
   isPending: false,
   isRejected: false,
@@ -45,6 +47,27 @@ const transaction = (state = initialState, { type, payload }) => {
         isfulfilled: true,
         dataStatus: payload.data.status,
       };
+
+    case getSampleHistoryAction + pending:
+      return {
+        ...state,
+        isPending: true,
+        isfulfilled: false,
+      };
+    case getSampleHistoryAction + rejected:
+      return {
+        ...state,
+        isPending: false,
+        isRejected: true,
+      };
+    case getSampleHistoryAction + fulfilled:
+      return {
+        ...state,
+        isPending: false,
+        isfulfilled: true,
+        sampleHistory: payload.data.data,
+      };
+
     case getHistoryAction + pending:
       return {
         ...state,

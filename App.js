@@ -30,6 +30,7 @@ import ChangePIN from './src/screens/changePIN';
 import EnterEmail from './src/screens/enterEmail';
 import RessetPassword from './src/screens/resetPassword';
 import Personal from './src/screens/personalInfo';
+import OTP from './src/screens/OTP';
 
 const Stack = createStackNavigator();
 const App = () => {
@@ -183,6 +184,13 @@ const App = () => {
               <Stack.Screen
                 name="notification"
                 component={Notification}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              <Stack.Screen
+                name="otp"
+                component={OTP}
                 options={{
                   headerShown: false,
                 }}
