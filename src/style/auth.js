@@ -1,4 +1,4 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 const height = Dimensions.get('screen').height * 0.75;
 export default StyleSheet.create({
   container: {
@@ -35,6 +35,9 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
+    borderTopWidth: 0.5,
+    borderColor: '#EEEEEE',
+    elevation: 1,
   },
   contentSignup: {
     paddingBottom: 30,
@@ -42,6 +45,9 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
+    borderTopWidth: 0.5,
+    borderColor: '#EEEEEE',
+    elevation: 1,
   },
   descript: {
     marginTop: 30,
@@ -108,6 +114,9 @@ export default StyleSheet.create({
     borderTopRightRadius: 30,
     height: '100%',
     paddingBottom: 30,
+    borderTopWidth: 0.5,
+    borderColor: '#EEEEEE',
+    elevation: 1,
   },
   containerPINSuccess: {
     marginTop: 210,
@@ -116,6 +125,9 @@ export default StyleSheet.create({
     borderTopRightRadius: 30,
     height: '100%',
     paddingBottom: 40,
+    borderTopWidth: 0.5,
+    borderColor: '#EEEEEE',
+    elevation: 1,
   },
   subHeaderPIN: {
     fontSize: 16,
@@ -152,7 +164,12 @@ export default StyleSheet.create({
   loading: {
     position: 'absolute',
     alignSelf: 'center',
-    top: '15%',
+    top: '3%',
+  },
+  createPINLoading: {
+    position: 'absolute',
+    alignSelf: 'center',
+    top: 4,
   },
   error: {
     color: 'red',

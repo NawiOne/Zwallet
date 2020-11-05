@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {updateUserCreator, delUserCreator} from '../redux/actions/auth';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { updateUserCreator, delUserCreator } from '../redux/actions/auth';
 import {
   View,
   Text,
@@ -8,27 +8,28 @@ import {
   ScrollView,
   BackHandler,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import SmootPinCode from 'react-native-smooth-pincode-input';
 import style from '../style/auth';
-import {useRoute, useNavigation} from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 
 const CreatePIN = () => {
   const [pin, setPin] = useState('');
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
-  const {auth} = useSelector((state) => state);
+  const { auth } = useSelector((state) => state);
   const navigation = useNavigation();
   const route = useRoute();
-  const {email, password} = route.params;
-  console.log(email, password);
+  const { email, password } = route.params;
 
   useEffect(() => {
     if (auth.status === 200) {
       navigation.reset({
         index: 0,
-        routes: [{name: 'pinsuccess'}],
+        routes: [{ name: 'pinsuccess' }],
       });
-      navigation.navigate('pinsuccess', {email: email, password: password});
+      navigation.navigate('pinsuccess', { email: email, password: password });
     }
   }, [navigation, auth]);
 
@@ -50,7 +51,6 @@ const CreatePIN = () => {
       ]);
       return true;
     };
-
     const backHandler = BackHandler.addEventListener(
       'hardwareBackPress',
       backAction,
@@ -59,6 +59,14 @@ const CreatePIN = () => {
     return () => backHandler.remove();
   }, []);
 
+  useEffect(() => {
+    if (auth.isPending) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  }, [auth.isPending]);
+
   console.log(auth.data.email, Number(pin));
   return (
     <ScrollView
@@ -66,6 +74,13 @@ const CreatePIN = () => {
       showsVerticalScrollIndicator={false}>
       <Text style={style.brandName}>Zwallet</Text>
       <View style={style.containerPIN}>
+        {loading ? (
+          <ActivityIndicator
+            size="small"
+            color="black"
+            style={style.createPINLoading}
+          />
+        ) : null}
         <View style={style.descript}>
           <Text style={style.header}>Create Secure PIN</Text>
           <Text style={style.subHeader}>

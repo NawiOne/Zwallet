@@ -1,5 +1,4 @@
-import {StyleSheet, Dimensions} from 'react-native';
-const height = Dimensions.get('screen').height;
+import { StyleSheet } from 'react-native';
 export default StyleSheet.create({
   container: {
     flex: 1,
@@ -71,16 +70,19 @@ export default StyleSheet.create({
     justifyContent: 'space-between',
     height: 90,
     backgroundColor: 'white',
-    marginBottom: 10,
+    marginBottom: 15,
     alignItems: 'center',
     borderRadius: 10,
-    elevation: 2,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
+    // elevation: 2,
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.84,
+    borderWidth: 0.2,
+    borderColor: '#EAECEE',
+    elevation: 0.5,
   },
   user: {
     flexDirection: 'row',

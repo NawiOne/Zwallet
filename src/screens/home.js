@@ -8,11 +8,11 @@ import {
   TouchableOpacity,
   StyleSheet,
 } from 'react-native';
+import _ioClient from 'socket.io-client';
 import asyncStorage from '@react-native-community/async-storage';
 import { getUserCreator } from '../redux/actions/auth';
 import {
   getSampleHistoryCreator,
-  getHistoryCreator,
   resetNumNotifCreator,
 } from '../redux/actions/transaction';
 import { clearStatusCreator } from '../redux/actions/auth';
@@ -29,7 +29,7 @@ const Home = ({ navigation }) => {
   const { auth, transaction } = useSelector((state) => state);
   const [neErr, setErr] = useState();
   const curency = new Intl.NumberFormat('de-DE').format(auth.dataUser.balance);
-  console.log(transaction);
+
   useEffect(() => {
     const token = asyncStorage.getItem('token');
     token.then((res) => {
@@ -52,7 +52,6 @@ const Home = ({ navigation }) => {
       setErr('network error');
     }
   }, [auth.isRejected]);
-  console.log(neErr);
 
   return (
     <View style={style.container}>

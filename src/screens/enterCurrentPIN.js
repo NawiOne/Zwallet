@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -7,16 +7,14 @@ import {
   StyleSheet,
 } from 'react-native';
 import Axios from 'axios';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import SmootPinCode from 'react-native-smooth-pincode-input';
-import {Input} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import IconUser from 'react-native-vector-icons/Feather';
 import style from '../style/auth';
 import style2 from '../style/enterPIN';
 
-const EnterChangePIN = ({navigation}) => {
-  const {auth} = useSelector((state) => state);
+const EnterChangePIN = ({ navigation }) => {
+  const { auth } = useSelector((state) => state);
   const [pin, setPin] = useState('');
   const [msg, setMsg] = useState(null);
   console.log(pin.length);
@@ -29,7 +27,7 @@ const EnterChangePIN = ({navigation}) => {
   };
 
   const handleSubmit = () => {
-    const url = `http://192.168.43.52:2000/auth/getpin?email=${auth.data.email}`;
+    const url = `http://52.91.11.189:3000/auth/getpin?email=${auth.data.email}`;
     let data = {
       pin: pin,
     };
@@ -65,7 +63,7 @@ const EnterChangePIN = ({navigation}) => {
       </View>
       <ScrollView
         contentContainerStyle={
-          (style2.container, {padding: 20, marginTop: -30})
+          (style2.container, { padding: 20, marginTop: -30 })
         }
         showsVerticalScrollIndicator={false}>
         <View style={style.descript}>

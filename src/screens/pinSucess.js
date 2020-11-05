@@ -1,17 +1,16 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
-import {View, Text, TouchableOpacity, ScrollView} from 'react-native';
-import {loginCreator, getUserCreator} from '../redux/actions/auth';
+import { useDispatch } from 'react-redux';
+import { View, Text, TouchableOpacity, ScrollView } from 'react-native';
+import { loginCreator, getUserCreator } from '../redux/actions/auth';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import style from '../style/auth';
-import {useRoute} from '@react-navigation/native';
+import { useRoute } from '@react-navigation/native';
 
-const PinSuccess = ({navigation}) => {
-  // const [show, setShow] = useState(true);
+const PinSuccess = ({ navigation }) => {
   const dispatch = useDispatch();
   const route = useRoute();
   console.log(route);
-  const {email, password} = route.params;
+  const { email, password } = route.params;
 
   return (
     <ScrollView
@@ -25,7 +24,7 @@ const PinSuccess = ({navigation}) => {
           </View>
           <View>
             <Text
-              style={{fontWeight: 'bold', textAlign: 'center', fontSize: 20}}>
+              style={{ fontWeight: 'bold', textAlign: 'center', fontSize: 20 }}>
               PIN successfully Created
             </Text>
             <Text style={style.successText}>

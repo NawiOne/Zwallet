@@ -1,9 +1,8 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#E5E5E5',
   },
   header: {
     padding: 15,
@@ -37,21 +36,21 @@ export default StyleSheet.create({
     marginBottom: 10,
   },
   transfer: {
-    backgroundColor: '#E5E8ED',
+    backgroundColor: '#DADBDD',
     width: 140,
     borderRadius: 10,
     flexDirection: 'row',
     alignItems: 'center',
-    padding:8,
+    padding: 8,
     justifyContent: 'center',
   },
   topUp: {
     width: 140,
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#E5E8ED',
+    backgroundColor: '#DADBDD',
     borderRadius: 10,
-    padding:8,
+    padding: 8,
     justifyContent: 'center',
   },
   operatText: {
@@ -82,14 +81,16 @@ export default StyleSheet.create({
     padding: 20,
     backgroundColor: 'white',
     borderRadius: 10,
-    elevation: 2,
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-
+    // elevation: 2,
+    // shadowOffset: {
+    //   width: 0,
+    //   height: 2,
+    // },
+    // shadowOpacity: 0.25,
+    // shadowRadius: 3.84,
+    borderWidth: 0.2,
+    borderColor: '#EAECEE',
+    elevation: 0.5,
   },
   user: {
     flexDirection: 'row',

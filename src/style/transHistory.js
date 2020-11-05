@@ -73,6 +73,9 @@ export default StyleSheet.create({
     marginRight: 20,
     borderRadius: 10,
     backgroundColor: 'white',
+    borderWidth: 0.2,
+    borderColor: '#EAECEE',
+    elevation: 0.5,
   },
   btnActive: {
     backgroundColor: '#6379F4',
@@ -89,5 +92,8 @@ export default StyleSheet.create({
     borderRadius: 10,
     width: 150,
     textAlign: 'center',
+    borderWidth: 0.2,
+    borderColor: '#EAECEE',
+    elevation: 0.5,
   },
 });

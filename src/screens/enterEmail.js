@@ -6,6 +6,7 @@ import {
   TextInput,
   StyleSheet,
   Dimensions,
+  ActivityIndicator,
 } from 'react-native';
 import RNSmtpMailer from 'react-native-smtp-mailer';
 import { useDispatch, useSelector } from 'react-redux';
@@ -16,12 +17,12 @@ const height = Dimensions.get('screen').height;
 import { useNavigation } from '@react-navigation/native';
 
 const otp = (Math.floor(Math.random() * 10000) + 10000).toString().substring(1);
-console.log(sharedVariable.hostEmail, 'ini shred', sharedVariable.password);
 
 const EnterEmail = () => {
   const [email, setEmail] = useState('');
   const [msg, setMsg] = useState(null);
   const navigation = useNavigation();
+  const [loading, setLoading] = useState(false);
   const dispatch = useDispatch();
   const { auth } = useSelector((state) => state);
 
@@ -69,6 +70,14 @@ const EnterEmail = () => {
     }
   }, [auth.status]);
 
+  useEffect(() => {
+    if (auth.isPending) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  }, [auth.isPending]);
+
   return (
     <>
       <View style={style.container}>
@@ -76,10 +85,13 @@ const EnterEmail = () => {
           <Text style={style.brand}>Zwallet</Text>
         </View>
         <View style={style.content}>
+          {loading ? (
+            <ActivityIndicator color="black" style={style.loading} />
+          ) : null}
           <View style={style.title}>
             <Text style={style.titleText}>Reset Password</Text>
             <Text style={style.desc}>
-              Enter your Zwallet -email so we can send you a password reset OTP
+              Enter your Zwallet E-mail so we can send you a password reset OTP
               code
             </Text>
           </View>
@@ -137,6 +149,9 @@ const style = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     padding: 20,
+    borderTopWidth: 0.5,
+    borderColor: '#EEEEEE',
+    elevation: 1,
   },
   title: {
     alignItems: 'center',
@@ -194,5 +209,10 @@ const style = StyleSheet.create({
   msg: {
     top: 45,
     color: 'red',
+  },
+  loading: {
+    position: 'absolute',
+    alignSelf: 'center',
+    top: 7,
   },
 });

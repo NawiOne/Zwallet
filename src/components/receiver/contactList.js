@@ -21,10 +21,6 @@ const ContactList = ({ navigation }) => {
   }, []);
 
   const getMoreContact = () => {
-    // if (pageInfo.nextPage !== '') {
-    //   setPage(page + 1);
-    //   dispatch(getMoreContactCreator(auth.data.id,page));
-    // }
     console.log('endofreached');
   };
 

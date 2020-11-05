@@ -1,4 +1,4 @@
-import {getContact, getMoreContact, searchcontact} from '../../utils/API';
+import { getContact, getMoreContact, searchcontact } from '../../utils/API';
 import {
   getContactAction,
   getMoreContactAction,
@@ -12,7 +12,7 @@ export const getContactCreator = (id) => {
     payload: getContact(id),
   };
 };
-export const getMoreContactCreator = (id,page) => {
+export const getMoreContactCreator = (id, page) => {
   return {
     type: getMoreContactAction,
     payload: getMoreContact(id, page),

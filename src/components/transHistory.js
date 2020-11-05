@@ -1,6 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { View, Text, Image, FlatList } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  FlatList,
+  ActivityIndicator,
+  StyleSheet,
+} from 'react-native';
 import {
   getHistoryCreator,
   getSampleHistoryCreator,
@@ -11,13 +18,22 @@ import avatar from '../assets/image/avatar.webp';
 const Transhistory = ({ navigation }) => {
   const { auth, transaction } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+  console.log(loading);
 
   useEffect(() => {
     dispatch(getSampleHistoryCreator(auth.data.id));
     dispatch(getHistoryCreator(auth.data.id));
   }, []);
 
-  const [data, setData] = useState();
+  useEffect(() => {
+    if (transaction.isPending) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  }, [transaction.isPending]);
+
   const renderItem = ({ item }) => {
     return (
       <View style={style.itemList}>
@@ -60,20 +76,33 @@ const Transhistory = ({ navigation }) => {
         <Text
           style={{ color: '#6379F4', fontSize: 14 }}
           onPress={() => {
-    
             navigation.navigate('transhistory');
           }}>
           See all
         </Text>
       </View>
-      <FlatList
-        showsVerticalScrollIndicator={false}
-        style={style.flatList}
-        data={transaction.sampleHistory}
-        renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()}
-      />
+      {loading ? (
+        <ActivityIndicator
+          color="black"
+          size="large"
+          style={innerStyle.loading}
+        />
+      ) : (
+        <FlatList
+          showsVerticalScrollIndicator={false}
+          style={style.flatList}
+          data={transaction.sampleHistory}
+          renderItem={renderItem}
+          keyExtractor={(item, index) => index.toString()}
+        />
+      )}
     </View>
   );
 };
 export default Transhistory;
+
+const innerStyle = StyleSheet.create({
+  loading: {
+    marginTop: 50,
+  },
+});

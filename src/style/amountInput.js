@@ -1,4 +1,4 @@
-import {StyleSheet, Dimensions} from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
 const height = Dimensions.get('screen').height * (95 / 100);
 
 export default StyleSheet.create({
@@ -37,6 +37,9 @@ export default StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     borderRadius: 10,
+    borderWidth: 0.1,
+    borderColor: '#EAECEE',
+    elevation: 0.5,
   },
   imgUser: {
     width: 56,

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -6,18 +6,16 @@ import {
   ScrollView,
   StyleSheet,
 } from 'react-native';
-import {Overlay} from 'react-native-elements';
+import { Overlay } from 'react-native-elements';
 import Axios from 'axios';
-import {useSelector} from 'react-redux';
+import { useSelector } from 'react-redux';
 import SmootPinCode from 'react-native-smooth-pincode-input';
-import {Input} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import IconUser from 'react-native-vector-icons/Feather';
 import style from '../style/auth';
 import style2 from '../style/enterPIN';
 
-const ChangePIN = ({navigation}) => {
-  const {auth} = useSelector((state) => state);
+const ChangePIN = ({ navigation }) => {
+  const { auth } = useSelector((state) => state);
   const [pin, setPin] = useState('');
   const [visble, setVisible] = useState(false);
   const filled = () => {
@@ -30,7 +28,7 @@ const ChangePIN = ({navigation}) => {
   console.log(auth.data.id);
 
   const handleSubmit = () => {
-    const url = `http://192.168.43.52:2000/auth/changepin?id=${auth.data.id}`;
+    const url = `http://52.91.11.189:3000/auth/changepin?id=${auth.data.id}`;
     let data = {
       pin: pin,
     };
@@ -62,7 +60,7 @@ const ChangePIN = ({navigation}) => {
       </View>
       <ScrollView
         contentContainerStyle={
-          (style2.container, {padding: 20, marginTop: -30})
+          (style2.container, { padding: 20, marginTop: -30 })
         }
         showsVerticalScrollIndicator={false}>
         <View style={style.descript}>
@@ -92,7 +90,7 @@ const ChangePIN = ({navigation}) => {
         </TouchableOpacity>
       </ScrollView>
       <Overlay isVisible={visble} overlayStyle={overlay.container}>
-        <View style={{alignItems: 'center'}}>
+        <View style={{ alignItems: 'center' }}>
           <Text style={overlay.title}>Change PIN success</Text>
           <TouchableOpacity
             onPress={() => {

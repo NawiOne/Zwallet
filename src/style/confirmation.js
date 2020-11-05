@@ -1,5 +1,4 @@
-import {StyleSheet, Dimensions} from 'react-native';
-const height = Dimensions.get('screen').height * (95 / 100);
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
@@ -74,6 +73,9 @@ export default StyleSheet.create({
     backgroundColor: 'white',
     width: 140,
     borderRadius: 10,
+    borderWidth: 0.2,
+    borderColor: '#EAECEE',
+    elevation: 0.5,
   },
   right: {
     padding: 10,
@@ -81,12 +83,18 @@ export default StyleSheet.create({
     width: 140,
     backgroundColor: 'white',
     borderRadius: 10,
+    borderWidth: 0.2,
+    borderColor: '#EAECEE',
+    elevation: 0.5,
   },
   note: {
     backgroundColor: 'white',
     width: '100%',
     padding: 10,
     borderRadius: 10,
+    borderWidth: 0.2,
+    borderColor: '#EAECEE',
+    elevation: 0.5,
   },
   title: {
     fontSize: 17,

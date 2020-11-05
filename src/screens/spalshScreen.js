@@ -1,7 +1,7 @@
 import React from 'react';
-import {View, Text, StyleSheet, StatusBar} from 'react-native';
+import { View, Text, StyleSheet, StatusBar } from 'react-native';
 
-const SplashScreen = ({navigation}) => {
+const SplashScreen = ({ navigation }) => {
   setTimeout(() => {
     navigation.replace('login');
   }, 4000);

@@ -13,8 +13,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   resetPasswordCreator,
   clearStatusCreator,
-  getUserCreator,
-  loginCreator,
 } from '../redux/actions/auth';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 const height = Dimensions.get('screen').height;
@@ -31,7 +29,6 @@ const RessetPassword = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const { email } = route.params;
-  console.log(email)
 
   const dispatch = useDispatch();
   const { auth } = useSelector((state) => state);
@@ -178,6 +175,9 @@ const style = StyleSheet.create({
     borderTopLeftRadius: 30,
     borderTopRightRadius: 30,
     padding: 20,
+    borderTopWidth: 0.5,
+    borderColor: '#EEEEEE',
+    elevation: 1,
   },
   title: {
     alignItems: 'center',

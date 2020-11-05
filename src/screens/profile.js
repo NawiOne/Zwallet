@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {Overlay} from 'react-native-elements';
-import {useDispatch, useSelector} from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { Overlay } from 'react-native-elements';
+import { useDispatch, useSelector } from 'react-redux';
 import ImagePicker from 'react-native-image-picker';
 import {
   logoutCreator,
@@ -8,6 +8,7 @@ import {
   clearStatusCreator,
   updateUserCreator,
 } from '../redux/actions/auth';
+import { clearTransCreator } from '../redux/actions/transaction';
 import {
   View,
   Text,
@@ -24,8 +25,8 @@ import style from '../style/profile';
 import Icon from 'react-native-vector-icons/Feather';
 import imgUser from '../assets/image/avatar.webp';
 
-const Profile = ({navigation}) => {
-  const {auth} = useSelector((state) => state);
+const Profile = ({ navigation }) => {
+  const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const [image, setImage] = useState(null);
@@ -39,9 +40,10 @@ const Profile = ({navigation}) => {
     navigation.navigate('login');
     navigation.reset({
       index: 0,
-      routes: [{name: 'login'}],
+      routes: [{ name: 'login' }],
     });
     dispatch(logoutCreator());
+    dispatch(clearTransCreator());
   };
 
   const toggleOverlay = () => {
@@ -52,8 +54,8 @@ const Profile = ({navigation}) => {
     Alert.alert(
       'File Too Larger',
       '',
-      [{text: 'OK', onPress: () => console.log('OK Pressed')}],
-      {cancelable: false},
+      [{ text: 'OK', onPress: () => console.log('OK Pressed') }],
+      { cancelable: false },
     );
   };
   const handleChoose = () => {
@@ -120,7 +122,7 @@ const Profile = ({navigation}) => {
             <Image source={image} style={style.imgUser} />
           ) : auth.dataUser.picture !== null ? (
             <Image
-              source={{uri: auth.dataUser.picture}}
+              source={{ uri: auth.dataUser.picture }}
               style={style.imgUser}
             />
           ) : (
@@ -133,7 +135,7 @@ const Profile = ({navigation}) => {
           <Text style={style.name}>{auth.dataUser.username}</Text>
           <Text style={style.phone}>{auth.dataUser.phone}</Text>
         </View>
-        <View style={{padding: 20}}>
+        <View style={{ padding: 20 }}>
           <TouchableOpacity
             style={style.listOperation}
             onPress={() => {
@@ -161,7 +163,7 @@ const Profile = ({navigation}) => {
           <View style={style.listOperation}>
             <Text style={style.nameOperation}>Notification</Text>
             <Switch
-              trackColor={{false: '#767577', true: '#81b0ff'}}
+              trackColor={{ false: '#767577', true: '#81b0ff' }}
               thumbColor={isEnabled ? 'white' : '#f4f3f4'}
               onValueChange={toggleSwitch}
               value={isEnabled}

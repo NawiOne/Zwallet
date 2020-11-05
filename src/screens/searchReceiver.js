@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   Text,
@@ -7,7 +7,7 @@ import {
   StyleSheet,
   BackHandler,
 } from 'react-native';
-import {useSelector, useDispatch} from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import style from '../style/receiver';
 import Icon from 'react-native-vector-icons/AntDesign';
 import Empty from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -17,8 +17,8 @@ import {
   getContactCreator,
 } from '../redux/actions/contact';
 
-const Receiver = ({navigation}) => {
-  const {auth, contact} = useSelector((state) => state);
+const Receiver = ({ navigation }) => {
+  const { auth, contact } = useSelector((state) => state);
   const [name, setName] = useState();
   const dispatch = useDispatch();
   console.log(contact);

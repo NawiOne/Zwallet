@@ -1,6 +1,6 @@
-import React, {useState, useEffect} from 'react';
-import {useDispatch, useSelector} from 'react-redux';
-import {registerCreator, clearStatusCreator} from '../redux/actions/auth';
+import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { registerCreator, clearStatusCreator } from '../redux/actions/auth';
 import {
   View,
   Text,
@@ -9,11 +9,11 @@ import {
   ActivityIndicator,
   StyleSheet,
 } from 'react-native';
-import {Input} from 'react-native-elements';
+import { Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconUser from 'react-native-vector-icons/Feather';
 import style from '../style/auth';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
@@ -24,10 +24,8 @@ const SignUp = () => {
   const [msg1, setMsg1] = useState(null);
   const [msg2, setMsg2] = useState(null);
   const navigation = useNavigation();
-  const {auth} = useSelector((state) => state);
+  const { auth } = useSelector((state) => state);
   const dispatch = useDispatch();
-
-  console.log(email, pass, user);
 
   const allEmpty = () => {
     if (user === '' || email === '' || pass === '') {
@@ -54,7 +52,7 @@ const SignUp = () => {
   };
   useEffect(() => {
     if (auth.status === 200) {
-      navigation.navigate('createpin', {email: email, password: pass});
+      navigation.navigate('createpin', { email: email, password: pass });
       dispatch(clearStatusCreator());
       setMsg1(null);
     } else if (auth.status === 500) {
@@ -70,7 +68,7 @@ const SignUp = () => {
       <Text style={style.brandNameSignup}>Zwallet</Text>
       <View style={style.contentSignup}>
         {auth.isPending ? (
-          <ActivityIndicator color="red" size="large" style={style.loading} />
+          <ActivityIndicator color="black" style={style.loading} />
         ) : null}
         {msg === null ? null : <Text style={styling.error1}>{msg}</Text>}
         <View style={style.descript}>

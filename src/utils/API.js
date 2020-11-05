@@ -8,12 +8,12 @@ export const register = (username, email, password) => {
     id_level: 2,
     balance: 200000,
   };
-  const url = 'http://192.168.43.52:2000/auth/register';
+  const url = 'http://52.91.11.189:3000/auth/register';
   return Axios.post(url, data);
 };
 
 export const login = (email, password) => {
-  const url = 'http://192.168.43.52:2000/auth/login';
+  const url = 'http://52.91.11.189:3000/auth/login';
   return Axios.post(url, {
     email: email,
     password: password,
@@ -46,22 +46,22 @@ export const update = (username, password, pin, image, email) => {
       accept: 'application/json',
     },
   };
-  const url = 'http://192.168.43.52:2000/auth/update';
+  const url = 'http://52.91.11.189:3000/auth/update';
   return Axios.patch(url, data, config);
 };
 
 export const deleteUser = (email) => {
-  const uri = `http://192.168.43.52:2000/auth/delete?email=${email}`;
+  const uri = `http://52.91.11.189:3000/auth/delete?email=${email}`;
   return Axios.delete(uri);
 };
 
 export const getUser = (email) => {
-  const url = `http://192.168.43.52:2000/auth/?email=${email}`;
+  const url = `http://52.91.11.189:3000/auth/?email=${email}`;
   return Axios.get(url);
 };
 
 export const updatePassword = (password, newPassword, email) => {
-  const url = `http://192.168.43.52:2000/auth/updatepass?email=${email}`;
+  const url = `http://52.91.11.189:3000/auth/updatepass?email=${email}`;
   return Axios.post(url, {
     password: password,
     newPassword: newPassword,
@@ -69,16 +69,16 @@ export const updatePassword = (password, newPassword, email) => {
 };
 
 export const getContact = (id) => {
-  const url = `http://192.168.43.52:2000/contact?id=${id}&page=1&limit=10`;
+  const url = `http://52.91.11.189:3000/contact?id=${id}&page=1&limit=10`;
   return Axios.get(url);
 };
 export const getMoreContact = (id, page) => {
-  const url = `http://192.168.43.52:2000/contact?id=${id}&page=${page}&limit=3`;
+  const url = `http://52.91.11.189:3000/contact?id=${id}&page=${page}&limit=3`;
   return Axios.get(url);
 };
 
 export const searchcontact = (name) => {
-  const url = `http://192.168.43.52:2000/contact/search?name=${name}`;
+  const url = `http://52.91.11.189:3000/contact/search?name=${name}`;
   return Axios.get(url);
 };
 
@@ -100,43 +100,43 @@ export const doTransaction = (
     notes: note,
     balance: balance,
   };
-  const url = 'http://192.168.43.52:2000/transaction/dotrans';
+  const url = 'http://52.91.11.189:3000/transaction/dotrans';
   return Axios.post(url, data);
 };
 export const getSampleHistory = (id) => {
-  const url = `http://192.168.43.52:2000/transaction?id=${id}&page=1&limit=4`;
+  const url = `http://52.91.11.189:3000/transaction?id=${id}&page=1&limit=4`;
   return Axios.get(url);
 };
 
 export const getHistory = (id) => {
-  const url = `http://192.168.43.52:2000/transaction?id=${id}&page=1&limit=20`;
+  const url = `http://52.91.11.189:3000/transaction?id=${id}&page=1&limit=20`;
   return Axios.get(url);
 };
 
 export const getMoreHistory = (id, page) => {
-  const url = `http://192.168.43.52:2000/transaction?id=${id}&page=${page}&limit=5`;
+  const url = `http://52.91.11.189:3000/transaction?id=${id}&page=${page}&limit=5`;
   return Axios.get(url);
 };
 
 export const getEmail = (email) => {
-  const url = `http://192.168.43.52:2000/auth/getemail?email=${email}`;
+  const url = `http://52.91.11.189:3000/auth/getemail?email=${email}`;
   return Axios.get(url);
 };
 export const resetPassword = (password, email) => {
-  const url = `http://192.168.43.52:2000/auth/resetpass?email=${email}`;
+  const url = `http://52.91.11.189:3000/auth/resetpass?email=${email}`;
   return Axios.post(url, {
     password: password,
   });
 };
 export const updatePhone = (phone, email) => {
-  const url = `http://192.168.43.52:2000/auth/phone?email=${email}`;
+  const url = `http://52.91.11.189:3000/auth/phone?email=${email}`;
   return Axios.patch(url, {
     phone: phone,
   });
 };
 
 export const notif = (sender, receiver, amount, trans_type) => {
-  const url = 'http://192.168.43.52:2000/transaction/notif';
+  const url = 'http://52.91.11.189:3000/transaction/notif';
   return Axios.post(url, {
     sender_id: sender,
     receiver_id: receiver,

@@ -1,6 +1,6 @@
 import React from 'react';
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
-import {Overlay} from 'react-native-elements';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Overlay } from 'react-native-elements';
 
 const ModalOverlay = () => {
   return (

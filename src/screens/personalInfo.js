@@ -1,26 +1,23 @@
-import React, {useEffect, useState} from 'react';
+import React, { useState } from 'react';
 import {
   View,
   Text,
   TouchableOpacity,
   StyleSheet,
   TextInput,
-  ActivityIndicator,
 } from 'react-native';
-import {updatePhoneCreator} from '../redux/actions/auth';
-import {useSelector, useDispatch} from 'react-redux';
-import {Overlay, Input} from 'react-native-elements';
+import { updatePhoneCreator } from '../redux/actions/auth';
+import { useSelector, useDispatch } from 'react-redux';
+import { Overlay } from 'react-native-elements';
 import style from '../style/transHistory';
 import Icon from 'react-native-vector-icons/AntDesign';
 import CellPhone from 'react-native-vector-icons/FontAwesome';
 
-const Personal = ({navigation}) => {
+const Personal = ({ navigation }) => {
   const [phone, setPhone] = useState('');
-  console.log(phone);
   const [visible, setVisible] = useState(false);
-  const {auth} = useSelector((state) => state);
   const userPhone = useSelector((state) => state.auth.dataUser.phone);
-  const {dataUser} = useSelector((state) => state.auth);
+  const { dataUser } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
 
   const handleSubmit = () => {
@@ -40,10 +37,8 @@ const Personal = ({navigation}) => {
       console.log('tidak ada');
     }
   };
-  console.log(firstName, lastName());
   return (
     <View style={style.container}>
-      {auth.isPending ? <ActivityIndicator size="large" color="red" /> : null}
       <View style={style.header}>
         <Icon
           name="arrowleft"
@@ -139,6 +134,9 @@ const innerStyle = StyleSheet.create({
     justifyContent: 'space-around',
     borderRadius: 10,
     marginBottom: 15,
+    borderWidth: 0.2,
+    borderColor: '#EAECEE',
+    elevation: 0.5,
   },
   listTitle: {
     color: '#7A7886',

@@ -8,12 +8,9 @@ import {
   BackHandler,
   Alert,
 } from 'react-native';
-import Axios from 'axios';
 import { useSelector } from 'react-redux';
 import SmootPinCode from 'react-native-smooth-pincode-input';
-import { Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import IconUser from 'react-native-vector-icons/Feather';
 import style from '../style/auth';
 import style2 from '../style/enterPIN';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -21,7 +18,6 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 const OTP = () => {
   const route = useRoute();
   const navigation = useNavigation();
-  const { auth } = useSelector((state) => state);
   const [pin, setPin] = useState('');
   const [msg, setMsg] = useState(null);
   console.log(pin.length);
@@ -42,9 +38,9 @@ const OTP = () => {
       console.log(msg);
     } else {
       setMsg(null);
-      navigation.navigate("resetpassword", {
-          email: email,
-      })
+      navigation.navigate('resetpassword', {
+        email: email,
+      });
     }
   };
 

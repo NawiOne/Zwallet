@@ -15,6 +15,7 @@
     "@react-navigation/native": "^5.7.5",
     "@react-navigation/stack": "^5.9.2",
     "axios": "^0.20.0",
+    "bundle": "^2.1.0",
     "intl": "^1.2.5",
     "luxon": "^1.25.0",
     "moment": "^2.29.0",

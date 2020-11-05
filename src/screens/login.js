@@ -1,5 +1,5 @@
-import React, {useState, useEffect} from 'react';
-import {useSelector, useDispatch} from 'react-redux';
+import React, { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {
   loginCreator,
   clearStatusCreator,
@@ -12,21 +12,21 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
-import {Input} from 'react-native-elements';
+import { Input } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import style from '../style/auth';
 
-const Login = ({navigation}) => {
+const Login = ({ navigation }) => {
   const dispatch = useDispatch();
-  const {auth} = useSelector((state) => state);
+  const { auth } = useSelector((state) => state);
   const [msg, setMsg] = useState(null);
 
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
   const [show, setShow] = useState(true);
-  console.log(msg);
-  console.log(auth.status);
+  const [loading, setLoading] = useState(false);
 
   const allEmpty = () => {
     if (email === '' || pass === '') {
@@ -41,11 +41,11 @@ const Login = ({navigation}) => {
         navigation.navigate('home');
         navigation.reset({
           index: 0,
-          routes: [{name: 'home'}],
+          routes: [{ name: 'home' }],
         });
       }
     });
-  }, [navigation, auth]);
+  }, [navigation, auth.data]);
 
   useEffect(() => {
     if (auth.status === 500) {
@@ -54,12 +54,23 @@ const Login = ({navigation}) => {
     }
   }, [auth, dispatch, navigation]);
 
+  useEffect(() => {
+    if (auth.isPending) {
+      setLoading(true);
+    } else {
+      setLoading(false);
+    }
+  }, [auth.isPending]);
+
   return (
     <ScrollView
       contentContainerStyle={style.container}
       showsVerticalScrollIndicator={false}>
       <Text style={style.brandName}>Zwallet</Text>
       <View style={style.content}>
+        {loading ? (
+          <ActivityIndicator color="black" style={style2.loading} />
+        ) : null}
         {msg === null ? null : <Text style={style2.error}>{msg}</Text>}
         <View style={style.descript}>
           <Text style={style.header}>Login</Text>
@@ -79,7 +90,10 @@ const Login = ({navigation}) => {
                 color={email === '' ? '#878787' : '#6379F4'}
               />
             }
-            onChangeText={(text) => setEmail(text)}
+            onChangeText={(text) => {
+              setEmail(text);
+              setMsg(null);
+            }}
           />
           <Input
             placeholder="Enter your password"
@@ -149,6 +163,11 @@ const style2 = StyleSheet.create({
     position: 'absolute',
     color: 'red',
     fontWeight: 'bold',
+    alignSelf: 'center',
+  },
+  loading: {
+    position: 'absolute',
+    top: '3%',
     alignSelf: 'center',
   },
 });

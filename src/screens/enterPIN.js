@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   ScrollView,
   StyleSheet,
+  ActivityIndicator,
 } from 'react-native';
 import { useSelector, useDispatch } from 'react-redux';
 import {
@@ -31,6 +32,8 @@ const EnterPIN = () => {
   const navigation = useNavigation();
   const [pin, setPin] = useState('');
   const [msg, setMsg] = useState(null);
+  const [loading, setloading] = useState(false);
+  console.log(loading);
 
   const filled = () => {
     if (pin.length === 6) {
@@ -53,7 +56,7 @@ const EnterPIN = () => {
   } = route.params;
 
   const handleSubmit = () => {
-    const url = `http://192.168.43.52:2000/auth/getpin?email=${auth.data.email}`;
+    const url = `http://52.91.11.189:3000/auth/getpin?email=${auth.data.email}`;
     let data = {
       pin: pin,
     };
@@ -116,6 +119,12 @@ const EnterPIN = () => {
     );
   }, []);
 
+  useEffect(() => {
+    if (transaction.isPending) {
+      setloading(true);
+    }
+  }, [transaction.isPending]);
+
   return (
     <View>
       <View style={style2.header}>
@@ -140,6 +149,9 @@ const EnterPIN = () => {
             Enter your 6 digits PIN for confirmation to continue transfering
             money
           </Text>
+          {loading ? (
+            <ActivityIndicator color="black" style={errorStyle.loading} />
+          ) : null}
           {msg !== null ? <Text style={errorStyle.error}>{msg}</Text> : null}
         </View>
         <View style={style.formPin}>
@@ -172,6 +184,10 @@ export default EnterPIN;
 const errorStyle = StyleSheet.create({
   error: {
     color: 'red',
+    position: 'absolute',
+    top: 95,
+  },
+  loading: {
     position: 'absolute',
     top: 95,
   },

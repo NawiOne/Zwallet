@@ -10,6 +10,7 @@ import {
   fulfilled,
   notificAction,
   resetNumNotifAction,
+  clearAction,
 } from '../actions/actionType';
 
 const initialState = {
@@ -67,7 +68,11 @@ const transaction = (state = initialState, { type, payload }) => {
         isfulfilled: true,
         sampleHistory: payload.data.data,
       };
-
+    case clearAction:
+      return {
+        ...state,
+        sampleHistory: [],
+      };
     case getHistoryAction + pending:
       return {
         ...state,
@@ -101,18 +106,6 @@ const transaction = (state = initialState, { type, payload }) => {
         isRejected: true,
         history: payload.data,
       };
-    // case getMoreTransAction + fulfilled:
-    //   let newData = payload.data.data.map((item) => {
-    //     const dataHistory = {
-    //       null: null
-    //     }
-    //   })
-    //   return {
-    //     ...state,
-    //     isPending: false,
-    //     isfulfilled: true,
-    //     history: payload.data.data,
-    //   };
 
     case notificAction + pending:
       return {

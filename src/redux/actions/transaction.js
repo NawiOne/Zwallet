@@ -6,6 +6,7 @@ import {
   notificAction,
   setNumNotifAction,
   resetNumNotifAction,
+  clearAction,
 } from '../actions/actionType';
 import {
   doTransaction,
@@ -75,5 +76,10 @@ export const setNumNotifCreator = () => {
 export const resetNumNotifCreator = () => {
   return {
     type: resetNumNotifAction,
+  };
+};
+export const clearTransCreator = () => {
+  return {
+    type: clearAction,
   };
 };
