@@ -40,11 +40,11 @@
 
 ## Screenshots
 <div align="center">
-![zwallet](/src/assets/image/zwallet/Screenshot_2020-10-23-20-17-02.png)
-![zwallet](src/assets/image/zwallet/Screenshot_2020-10-24-12-55-36.png)
-![zwallet](src/assets/image/zwallet/Screenshot_2020-10-24-12-56-00.png)
-![zwallet](src/assets/image/zwallet/Screenshot_2020-10-24-14-44-13.png)
+    <img width="250" src="./src/assets/image/zwallet/Screenshot_2020-10-23-20-17-02.png">   
+    <img width="250" src="./src/assets/image/zwallet/Screenshot_2020-10-24-12-55-36.png>
+    <img width="250" src="./src/assets/image/zwallet/Screenshot_2020-10-24-12-56-00.png">
 </div>
+
 
 ## Release APK Debug
 <a href="https://drive.google.com/file/d/1iidEIHHHIZox3XFrfNs9lTozFRBJmeZi/view?usp=sharing">
@@ -57,7 +57,7 @@
     <tr>
       <td align="center">
         <a href="https://github.com/NawiOne">
-          ![zwallet](src/assets/image/saya.jpg)
+          <img width="100" src="./src/assets/image/saya.jpg"><br/>
           <sub><b>Nawirudin</b></sub>
         </a>
       </td>
