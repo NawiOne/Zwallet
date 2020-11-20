@@ -1,8 +1,5 @@
 <h1 align="center">Zwallet</h1>
 <p align="center">
-  <img width="250" src="./src/assets/logo-hithitbaam/logo.png"/>
-</p>
-<p align="center">
   Built with React Native.
 </p>
 
@@ -16,7 +13,6 @@
 - [Screenshots](#screenshots)
 - [Release APK Debug](#release-apk-debug)
 - [Contributors](#contributors)
-- [Link demo Zwallet](#link-demo-zwallet)
 
 ## Introduction
 <b>Zwallet</b> is a digital wallet application where users can make transfers and top-ups to other contacts / users who use Zwallet. This application runs on the android operating system
@@ -43,6 +39,7 @@
     <img width="250" src="./src/assets/image/zwallet/Screenshot_2020-10-23-20-17-02.png">   
     <img width="250" src="./src/assets/image/zwallet/Screenshot_2020-10-24-12-55-36.png">
     <img width="250" src="./src/assets/image/zwallet/Screenshot_2020-10-24-12-56-00.png">
+    <img width="250" src="./src/assets/image/zwallet/Screenshot_2020-10-24-14-44-13.png">
 </div>
 
 
@@ -64,6 +61,3 @@
     </tr>
   </table>
 </center>
-
-  
-## Link demo [Zwallet](https://drive.google.com/file/d/1iidEIHHHIZox3XFrfNs9lTozFRBJmeZi/view?usp=sharing)
