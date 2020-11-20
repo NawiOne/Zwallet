@@ -39,7 +39,6 @@
     <img width="250" src="./src/assets/image/zwallet/Screenshot_2020-10-24-14-44-13.png"> 
     <img width="250" src="./src/assets/image/zwallet/Screenshot_2020-10-24-12-55-36.png">
     <img width="250" src="./src/assets/image/zwallet/Screenshot_2020-10-24-12-56-00.png">
-    <img width="250" src="./src/assets/image/zwallet/Screenshot_2020-10-24-14-44-13.png">
 </div>
 
 
