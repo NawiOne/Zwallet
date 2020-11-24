@@ -30,7 +30,7 @@
 
 ## Usage for development
 1. Open your terminal or command prompt
-2. Type `https://github.com/NawiOne/Zwallet.git`
+2. Type `git clone https://github.com/NawiOne/Zwallet.git`
 3. Open the folder and type `npm install` for install dependencies
 4. Type `npm run android` for run this app. ***Make sure your device is connected with debugging mode***.
 
